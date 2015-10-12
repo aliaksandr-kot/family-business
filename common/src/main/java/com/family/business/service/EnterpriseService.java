@@ -1,4 +1,4 @@
-package service;
+package com.family.business.service;
 
 public interface EnterpriseService
 {
