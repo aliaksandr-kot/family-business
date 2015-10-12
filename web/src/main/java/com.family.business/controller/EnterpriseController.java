@@ -15,7 +15,7 @@ public class EnterpriseController
     @Autowired
     EnterpriseController enterpriseController;
 
-    @RequestMapping(method=RequestMethod.GET)
+    @RequestMapping
     public void findEnterprise(Long id)
     {
 
