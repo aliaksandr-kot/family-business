@@ -1,7 +1,4 @@
-package main.test;
-
-import java.util.HashSet;
-import java.util.Set;
+package com.family.business.test;
 
 import javax.persistence.*;
 
@@ -18,13 +15,13 @@ public class User {
 
 //    @OneToMany(mappedBy = "user")
 //    private Set<Note> notes = new HashSet<>();
-    
+
     @JsonIgnore
     @Column(name = "PASSWORD")
     public String password;
     @Column(name = "USER_NAME")
     public String username;
-    
+
 	public Long getId() {
 		return id;
 	}
@@ -50,6 +47,6 @@ public class User {
 		this.username = username;
 	}
 
-    
-    
+
+
 }

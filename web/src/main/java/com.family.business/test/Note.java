@@ -1,4 +1,4 @@
-package main.test;
+package com.family.business.test;
 
 import java.util.Date;
 
@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Note {
-	
+
     @JsonIgnore
     @ManyToOne
     private User user;
@@ -21,7 +21,7 @@ public class Note {
     private Long id;
 
     private Date date;
-    
+
     private String text;
 
 	public Long getId() {
@@ -39,11 +39,11 @@ public class Note {
 	public void setText(String text) {
 		this.text = text;
 	}
-    
+
 	public User getUser() {
 		return user;
 	}
-	
+
 	public void setUser(User user) {
 		this.user = user;
 	}

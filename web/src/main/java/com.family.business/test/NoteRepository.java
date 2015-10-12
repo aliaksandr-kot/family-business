@@ -1,4 +1,4 @@
-package main.test;
+package com.family.business.test;
 
 import java.util.Collection;
 

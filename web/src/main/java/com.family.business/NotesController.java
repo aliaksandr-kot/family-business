@@ -1,13 +1,9 @@
-package main;
+package com.family.business;
 
 import java.util.Collection;
 
 import javax.validation.Valid;
 
-import main.test.Note;
-import main.test.NoteRepository;
-import main.test.User;
-import main.test.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.family.business.test.Note;
+import com.family.business.test.NoteRepository;
+import com.family.business.test.User;
+import com.family.business.test.UserRepository;
 
 @RestController // http://localhost:8080/vladson/notes
 @RequestMapping("{username}/notes")
@@ -31,7 +32,7 @@ public class NotesController {
     {
 		return noteRepository.findByUserUsername(username);
 	}
-	
+
 	@RequestMapping(method=RequestMethod.POST)
 	public void addNote(@PathVariable String username, @Valid @RequestBody Note note){
 		User user = userRepository.findByUsername(username)

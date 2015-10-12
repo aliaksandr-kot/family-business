@@ -1,12 +1,13 @@
-package main.conf;
+package com.family.business.conf;
 
-import main.test.Note;
-import main.test.NoteRepository;
-import main.test.User;
-import main.test.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.family.business.test.Note;
+import com.family.business.test.NoteRepository;
+import com.family.business.test.User;
+import com.family.business.test.UserRepository;
 
 @Configuration
 public class Config {
