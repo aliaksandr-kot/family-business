@@ -8,5 +8,7 @@ public interface PersonService
 
     Person save(Person person);
 
+    Person findById(Long id);
+
     void deleteById(Long id);
 }

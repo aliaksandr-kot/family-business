@@ -1,5 +1,6 @@
 package com.family.business.obj;
 
+import java.util.Collection;
 import java.util.Date;
 
 public interface Person extends Base
@@ -21,4 +22,6 @@ public interface Person extends Base
     String getPhone();
 
     String getPhoto();
+
+    Collection<EmployerWork> getEmployerWorks();
 }

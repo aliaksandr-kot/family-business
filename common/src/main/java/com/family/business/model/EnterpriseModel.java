@@ -1,21 +1,32 @@
-package com.family.business.obj.impl;
+package com.family.business.model;
 
 import com.family.business.obj.Enterprise;
 import com.family.business.obj.Owner;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "ENTERPRISE")
-public class EnterpriseEntity extends BaseEntity implements Enterprise
+public class EnterpriseModel extends BaseModel implements Enterprise
 {
     private String name;
     private String address;
     private String phone;
     private Owner owner;
 
+    public EnterpriseModel()
+    {
+        super();
+    }
+    public EnterpriseModel(Enterprise enterprise)
+    {
+        super(enterprise);
+        setName(enterprise.getName());
+        setAddress(enterprise.getAddress());
+        setPhone(enterprise.getPhone());
+        if(enterprise.getOwner() != null)
+        {
+            setOwner(new OwnerModel(enterprise.getOwner()));
+        }
+    }
+
     @Override
-    @Column(name = "NAME")
     public String getName() {
         return name;
     }
@@ -25,7 +36,6 @@ public class EnterpriseEntity extends BaseEntity implements Enterprise
     }
 
     @Override
-    @Column(name = "ADDRESS")
     public String getAddress() {
         return address;
     }
@@ -35,7 +45,6 @@ public class EnterpriseEntity extends BaseEntity implements Enterprise
     }
 
     @Override
-    @Column(name = "PHONE")
     public String getPhone() {
         return phone;
     }
@@ -45,8 +54,6 @@ public class EnterpriseEntity extends BaseEntity implements Enterprise
     }
 
     @Override
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = OwnerEntity.class)
-    @JoinColumn(name = "FK_OWNER_ID")
     public Owner getOwner() {
         return owner;
     }

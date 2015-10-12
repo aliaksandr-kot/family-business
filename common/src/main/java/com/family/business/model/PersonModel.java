@@ -1,8 +1,11 @@
 package com.family.business.model;
 
 
+import com.family.business.obj.EmployerWork;
 import com.family.business.obj.Person;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 public class PersonModel extends BaseModel implements Person
@@ -16,6 +19,7 @@ public class PersonModel extends BaseModel implements Person
     private String address;
     private String phone;
     private String photo;
+    private Collection<EmployerWork> employerWorks;
 
     public PersonModel()
     {
@@ -34,6 +38,10 @@ public class PersonModel extends BaseModel implements Person
         setPassportLong(person.getPassportLong());
         setPhone(person.getPhone());
         setPhoto(person.getPhoto());
+        for (EmployerWork employerWork : person.getEmployerWorks())
+        {
+            getEmployerWorks().add(new EmployerWorkModel(employerWork));
+        }
     }
 
     @Override
@@ -133,5 +141,15 @@ public class PersonModel extends BaseModel implements Person
     public void setPhoto(String photo)
     {
         this.photo = photo;
+    }
+
+    @Override
+    public Collection<EmployerWork> getEmployerWorks()
+    {
+        if(employerWorks == null)
+        {
+            employerWorks = new ArrayList<>();
+        }
+        return employerWorks;
     }
 }

@@ -26,6 +26,20 @@ public class PersonServiceImpl implements PersonService
     }
 
     @Override
+    public Person findById(Long id)
+    {
+        Person person = personRepository.findOne(id);
+        if(person != null)
+        {
+            return new PersonModel(person);
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    @Override
     public void deleteById(Long id) {
         try
         {

@@ -1,11 +1,15 @@
 package com.family.business.obj.impl;
 
+import com.family.business.obj.EmployerWork;
 import com.family.business.obj.Person;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
+@Table(name = "PERSON")
 public class PersonEntity extends BaseEntity implements Person
 {
     private String firstName;
@@ -17,8 +21,10 @@ public class PersonEntity extends BaseEntity implements Person
     private String address;
     private String phone;
     private String photo;
+    private Collection<EmployerWork> employerWorks;
 
     @Override
+    @Column(name = "FIRST_NAME")
     public String getFirstName() {
         return firstName;
     }
@@ -28,6 +34,7 @@ public class PersonEntity extends BaseEntity implements Person
     }
 
     @Override
+    @Column(name = "MIDDLE_NAME")
     public String getMiddleName() {
         return middleName;
     }
@@ -37,6 +44,7 @@ public class PersonEntity extends BaseEntity implements Person
     }
 
     @Override
+    @Column(name = "LAST_NAME")
     public String getLastName() {
         return lastName;
     }
@@ -46,6 +54,7 @@ public class PersonEntity extends BaseEntity implements Person
     }
 
     @Override
+    @Column(name = "BIRTH_DAY")
     public Date getBirthDay() {
         return birthDay;
     }
@@ -55,6 +64,7 @@ public class PersonEntity extends BaseEntity implements Person
     }
 
     @Override
+    @Column(name = "PASSPORT_SHORT")
     public String getPassportShort() {
         return passportShort;
     }
@@ -64,6 +74,7 @@ public class PersonEntity extends BaseEntity implements Person
     }
 
     @Override
+    @Column(name = "PASSPORT_LONG")
     public String getPassportLong() {
         return passportLong;
     }
@@ -73,6 +84,7 @@ public class PersonEntity extends BaseEntity implements Person
     }
 
     @Override
+    @Column(name = "ADDRESS")
     public String getAddress() {
         return address;
     }
@@ -82,6 +94,7 @@ public class PersonEntity extends BaseEntity implements Person
     }
 
     @Override
+    @Column(name = "PHONE")
     public String getPhone() {
         return phone;
     }
@@ -91,11 +104,27 @@ public class PersonEntity extends BaseEntity implements Person
     }
 
     @Override
+    @Column(name = "PHOTO")
     public String getPhoto() {
         return photo;
     }
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    @Override
+    @OneToMany(mappedBy = EmployerWorkEntity.LINK_PERSON, cascade = {CascadeType.ALL}, orphanRemoval = true)
+    public Collection<EmployerWork> getEmployerWorks()
+    {
+        if(employerWorks == null)
+        {
+            employerWorks = new ArrayList<>();
+        }
+        return employerWorks;
+    }
+
+    public void setEmployerWorks(Collection<EmployerWork> employerWorks) {
+        this.employerWorks = employerWorks;
     }
 }
